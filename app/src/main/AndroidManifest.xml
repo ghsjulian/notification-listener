@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.my.ghs" >
+    
+    <!-- Network & Internet -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- ✅ Phone Info (like IMEI/Device ID) -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- ✅ Storage (for reading/writing files) -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+    <!-- Write permission is ignored above Android 10 -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <!-- For Android 11+ -->
+    <!-- ✅ Foreground Service -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- ✅ Notification Access -->
+    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
+    <!-- ✅ To open other apps -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <!-- ✅ Optional: run after reboot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/hacker"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+		android:resizeableActivity = "true">
+        
+        <service
+            android:name=".MyNotificationListener"
+            android:label="Notification Service"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
